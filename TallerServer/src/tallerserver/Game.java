@@ -14,13 +14,14 @@ import java.util.Scanner;
  */
 public class Game {
 
-    public  void ame() {
+    public  char ame(char letra) {
         final int INTENTOS_TOTALES = 7; // Constante con el limite de fallos
         int intentos = 0;
         int aciertos = 0;
         // ingresa para leer por teclado
         Scanner teclado = new Scanner(System.in);
         teclado.useDelimiter("\n");
+        
         char resp;
         // Random para pillar una palabra al azar
         Random rnd = new Random();
@@ -52,7 +53,7 @@ public class Game {
                 imprimeOculta(tusRespuestas);
                 // Preguntamos letras por teclado
                 System.out.println("\nIntroduce una letra: ");
-                resp = teclado.next().toLowerCase().charAt(0);
+                resp = letra;//teclado.next().toLowerCase().charAt(0);
                 // Recorremos el array y comprobamos si se ha producido un acierto
                 for (int i = 0; i < separar.length; i++) {
                     if (separar[i] == resp) {
@@ -80,6 +81,8 @@ public class Game {
             // Volvemos a preguntarle al usuario si quiere volver a jugar
             resp = pregunta("\n\nQuieres volver a jugar?", teclado);
         } while (resp != 'n');
+        
+        return resp;
 
     }
 
