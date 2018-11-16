@@ -29,7 +29,7 @@ public class Game {
         String arrayPalabras[] = new String[3];
         arrayPalabras[0] = "hola";
         arrayPalabras[1] = "adios";
-        arrayPalabras[2] = "cojonudo";
+        arrayPalabras[2] = "saludos";
 
         do {
 

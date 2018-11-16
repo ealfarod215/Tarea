@@ -15,6 +15,7 @@ public class Server {
     private int intentos = 0;
     private String palabra;
     private boolean trigger = false;
+    Game game = new Game();
 
     public Server() {
         try {
@@ -35,7 +36,6 @@ public class Server {
 
     public void readData() {
         try {
-            Game game = new Game();
             byte[] buffer = new byte[400];
             in = new DatagramPacket(buffer, 0, buffer.length);
             socket.receive(in);
@@ -50,36 +50,5 @@ public class Server {
         }
     }
 
-    public String game(String letra) {
-        String mensaje;
-        int maxIntentos = 5;
-        if (trigger == false) {
-            String[] palabras = {"hamilton", "cigarro", "tokyo", "exotico"};
-            int palabraRandom = (int) (Math.random() * palabras.length);
-            palabra = palabras[palabraRandom];
-            trigger = true;
-        }
-
-        if (palabra.contains(letra)) {
-            mensaje = "La letra si esta en la palabra";
-            System.out.println(mensaje);
-        } else {
-            intentos++;
-            int total = maxIntentos - intentos;
-            mensaje = "La letra no esta en la palabra, quedan " + total + " intentos.";
-            if (total == 0) {
-                mensaje += "\nPerdio todos los intentos, la palabra era: " + palabra + ".\n";
-                intentos = 0;
-                trigger = false;
-            }
-        }
-        return mensaje;
-    }
     
-    
-    private char play(char letra) {
-        Game game = new Game();
-        return game.ame(letra);
-        
-    }
 }
